@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+    <title>Quizz</title>
+    
+<link rel="stylesheet" type="text/css" href="quizz.css" media="all">
+
+</head>
+<body>
+    <div class="presentation">
+      <div id="presentation-counter">Loading...</div>
+      <div class="slides">
+        <div class="slide" id="landing-slide">
+          
+          <section class="middle">
+            <p>This is a valtech quizz</p>
+            <p>Press <span id="left-init-key" class="key">&rarr;</span> key to advance.</p>
+            </section>
+        </div>
+
+        <div class="slide" id="controls-slide">
+          
+          <section>
+            <p>Slides controls, press:</p>
+            <ul>
+              <li><span class="key">←</span> and <span class="key">→</span> to move around.</li>
+              <li><span class="key">Ctrl/Command</span> and <span class="key">+</span> or <span class="key">-</span> to zoom in and out if slides don’t fit.</li>
+              <li><span class="key">s</span></span> to save your answers.</li>
+              <li>You are <span class="key" id="checkOnline"></span></li>
+            </ul>
+          </section>
+        </div>
+                
+        <div class="slide" id="question1-slide">
+          
+          <section>
+            <p>Question 1: Tu aimes le Javascript ?</p>
+            <ul>
+              <li><input id="q1r1" name="rq1" type="radio" value="Oui"><label for="q1r2">Oui</label></li>
+              <li><input id="q1r2" name="rq1" type="radio" value="Non"><label for="q1r2">Nom</label></li>
+            </ul>
+			<p id="savedValue1"></p>
+          </section>
+        </div>
+
+      </div> <!-- slides -->
+
+    </div> <!-- presentation -->
+
+    <script src="quizz.js"></script>
+
+	<script>
+
+	var onlineSpan = document.getElementById("checkOnline");
+	
+	if (navigator.onLine) {
+	  onlineSpan.innerHTML="OnLine";
+	} else {
+	  onlineSpan.innerHTML="OffLine";
+	}	
+
+	window.addEventListener("offline", function(e) {
+	  onlineSpan="OnLine";
+		alert("offline");
+	}, false);
+
+	window.addEventListener("online", function(e) {
+	  onlineSpan="OnLine";
+		alert("online");
+	}, false);
+
+	</script>
+  
+   
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<html>
+
+<head>
+	<link rel="stylesheet" href="vt.css" media="screen">
+	<script src="modernizr.js"></script>
+	<title>Valtech Training Home</title>
+	<script>
+	window.onload=function() {
+	var links= document.querySelectorAll('a','a:visited');
+	var linkClass;
+	for (var i=0; i<links.length; i++) {
+		linkClass = links[i].classList;
+		linkClass.add('texteFramboise');
+		}
+	}
+	function changeStyle() {
+		var headClass = document.querySelector('header[role="banner"]').classList;
+		headClass.toggle('bleu');
+		headClass.toggle('orange');
+		var navClass = document.querySelector('#content[role="main"]').classList;
+		navClass.toggle('bleuciel');
+		navClass.toggle('framboise');
+		var links= document.querySelectorAll('a','a:visited');
+		var linkClass;
+		for (var i=0;i<links.length;i++) {
+			linkClass = links[i].classList;
+			linkClass.toggle('texteBleu');
+			linkClass.toggle('texteFramboise');
+		}
+	}
+	</script>
+</head>
+
+<body>
+
+<header role="banner" class='orange'>
+	<div class="inner group">
+		<hgroup>
+			<h1>Valtech Training</h1>
+			<h2>Html5 and much more</h2>
+			<a id='menu-top-nav' onclick='changeStyle();' href='#'>tadaaaaaa !!</a>
+		</hgroup>
+	<nav>
+		<ul id="menu-main-nav">
+			<li><a href="/">contact</a></li>
+			<li><a href="/">Inscription</a></li>
+			<li><a href="/">FeedBack</a></li>
+		</ul>
+	</nav>
+	</div>
+</header>
+
+<div id="content" class="group framboise" role="main">
+	<article id="opener">
+		<div class="main">
+			<article class="post">
+				<header>
+					<h1><a href="/">Introducing the HTML5/CSS3 Training</a></h1>
+					<small> 19 decembre 2011</small>
+				</header>
+				<div class="entry">
+				<p>Le corps de la page est vu comme un ensemble d’articles présentant l’actualité de la société.
+				Ca ressemble typiquement à un blog mais nous nous sommes limités à un premier article par souci de simplicité. Plus précisément la structure du div principal (le centre de la page) sera la suivante</p>
+				<p class="read-more"><a href="/">Read full post</a></p>
+				</div>
+			</article>
+		</div>
+		<aside class="secondary">
+			<section class="mod">
+			<h3>Recent Comments</h3>
+			<ul id="recentcomments">
+				<li>Doussot Jerome : <a href="/">trop bien ...</a></li>
+				<li>Didier Dede : <a href="/">vivement demain ...</a></li>
+			</ul>
+			</section>
+		</aside>
+	</article>
+</div>
+
+<footer role="contentinfo">
+	<div class="inner">
+    <img class="vt-logo" src="LogoValtechTraining.png"/>
+		<span id="copyright">Merci de respecter les droits .... bla bla bla ....</span>
+     <img class="w3c-logo" src="HTML5_Badge_64.png"/>   
+    </div>
+</footer>
+	
+</body>
+
+</html>

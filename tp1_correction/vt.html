@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Welcome</title>
+    <link rel="stylesheet" href="vt.css" media="screen" />
+   <!-- step 3 -->
+    <script src="modernizr.js"></script>
+  <!-- end step 3 -->
+
+	    
+</head>
+<body>
+<header role="banner" class='orange'>
+    <div class="inner">
+        <hgroup>
+        <h1>Valtech Training</h1>
+        <h2>HTML5 and much more ...</h2>
+        </hgroup><!-- end hgroup -->
+        <!-- Step 2 -->
+      <a id='menu-top-nav' onclick='togglecss();' href='#'>changer de style</a>
+      <!-- end step 2 -->
+    <nav>
+<ul id="menu-main-nav" >
+<li class="menu-item"><a href="./contact.html">Contact</a></li>
+<li class="menu-item" ><a href="./inscription.html">Inscription</a></li>
+<li class="menu-item"><a href="./evaluation.html">FeedBack</a></li>
+<li class="menu-item"><a href="./quizz.html">Quizz</a></li>
+</ul>    	<!-- end ul -->
+    
+    </nav>
+    <!-- end nav -->
+	</div>
+	<!-- end .inner -->
+</header>
+
+<!-- end header -->
+<div id="content" class="group framboise" role="main">
+    <article id="opener" >
+        <div class="main">
+            <article class="post">
+                <header>
+                    <h1><a href="./Introducing-the-HTML5-CSS3-training/" rel="bookmark" title="Introducing the HTML5/CSS3 training">Introducing the HTML5/CSS3 training</a></h1>
+                    <small><time datetime="2011-08-01" pubdate>Aug 1st, 2011</time> by Xav.</small>
+
+                </header>
+                <div class="entry">
+                <p>HTML5 is for the time being not fully supported by popular browsers, but most of them are progressively evolving towards this new version of the famous HTML language. Thus, we can yet play with a lot of new features and that is what we are going to do !!!</p>
+                <p class="read-more"><a href="http:/">Read full post</a></p>
+                </div>
+              </article>
+              <!-- end .post -->
+        </div>
+    <!-- end .main -->
+                        
+        <aside class="secondary">    
+            <section class="mod">   
+             <h3>Recent Comments</h3><ul id="recentcomments">
+             <li class="recentcomments">Olivier : <a href='http://valtech-training.fr/fr/index/training/formations/developpement_web/html5-css3-HIT.html' class='url'>I can't wait </a></li>
+             <li class="recentcomments">St&eacute;phane : <a href="http://valtech-training.fr/fr/index/training/formations/developpement_web/html5-css3-HIT.html" class='url'>Works also in IE9 (? ;-)</a></li>
+             <li class="recentcomments">Denis : <a href="http://valtech-training.fr/fr/index/training/formations/developpement_web/html5-css3-HIT.html" class='url'>And for ipads ?</a></li>
+             <li class="recentcomments">Anne-lise : <a href='http://valtech-training.fr/fr/index/training/formations/developpement_web/html5-css3-HIT.html' class='url'>Women love it too</a></li>
+             <li class="recentcomments">Jocelyn : <a href="http://valtech-training.fr/fr/index/training/formations/developpement_web/html5-css3-HIT.html" class='url'>pfff, marketing again ...</a></li>
+            
+            <!-- end section -->
+            
+        </aside>
+        <!-- end .secondary -->
+    
+    </article>
+    <!-- end #opener -->
+
+</div>
+<footer role="contentinfo">
+	<div class="inner">
+    <img width="138" height="76" class="vt-logo" alt="Valtechlogo" src="LogoValtechTraining.png"/>
+		<span id="copyright">This is a training web site in HTML5. Feel free to use and modify it as you wish.</span>
+     <img width="64" height="64" class="w3c-logo" alt="W3C HTML5 logo" src="HTML5_Badge_64.png"/>   
+    </div>
+    <!-- end .inner -->
+</footer>
+<!-- end footer -->
+</body>
+<script>
+ window.onload=function() {
+ var links= document.querySelectorAll('a','a:visited');
+var linkClass;
+for (var i=0;i<links.length;i++) {
+linkClass = links[i].classList;
+linkClass.add('texteFramboise');
+    }
+}
+<!-- Step 2 -->
+//IE supports insertAdjacentHTML (mais pas classList)
+//document.querySelector('hgroup').insertAdjacentHTML("afterend","<a id='menu-top-nav' onclick='togglecss();' href='#'>changer de style</a>");
+function togglecss() {
+var headClass = document.querySelector('header[role="banner"]').classList;
+headClass.toggle('bleu');
+headClass.toggle('orange');
+var navClass = document.querySelector('#content[role="main"]').classList;
+navClass.toggle('bleuciel');
+navClass.toggle('framboise');
+var links= document.querySelectorAll('a','a:visited');
+var linkClass;
+for (var i=0;i<links.length;i++) {
+linkClass = links[i].classList;
+linkClass.toggle('texteBleu');
+linkClass.toggle('texteFramboise');
+    }
+}
+<!-- end step 2 -->
+
+
+</script>
+</html>

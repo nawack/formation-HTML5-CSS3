@@ -1,0 +1,398 @@
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  font-size:100%;
+  font:inherit;
+  vertical-align:baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{
+  display:block;
+}
+body{
+  line-height:1;
+}
+ol,ul{
+  list-style:none;
+}
+blockquote,q{
+  quotes:none;
+}
+blockquote:before,blockquote:after,
+q:before,q:after{
+  content:'';
+  content:none;
+}
+
+ins{
+  background: #FF3366;
+  color: #FFF;
+  padding: 4px;
+  text-decoration:none;
+}
+del{
+  text-decoration:line-through;
+}
+
+table{
+  border-collapse:collapse;
+  border-spacing:0;
+}
+
+/* couleurs pour etape 2
+----------------------------------------------------------------------------------------
+*/
+
+.bleu{
+	background: #0063A6;
+}
+	
+	
+.bleuciel{
+	border-top: 45px solid #0090D2;
+}
+
+.orange {
+		background:#FF6633;
+}
+
+.framboise {
+	
+	/* framboise : #FF3366 dans border:top*/
+	border-top: 45px solid #FF3366;
+}
+
+.texteBleu {
+	color: #0063A6;
+}
+
+.texteFramboise {
+	color: #FF3366;
+}
+
+
+
+/* 1.1 Link Styles
+--------------------------------------------------------- 
+framboise : #FF3366
+
+*/
+a, a:visited{
+	color: #FF3366;
+	text-decoration: none;
+}
+a:active,a:focus{
+	color: #0063A6;
+	position: relative;
+	top: 1px;
+}
+a:hover {color: #0063A6;}
+
+/* 2. BASE
+-----------------------------------------------------------------------------------------------
+===============================================================================================*/
+html{
+	margin-bottom: 1px;
+	min-height: 100%;
+}
+body {
+	background: #F0F0F0;
+	color: #444;
+	font-family: Georgia, serif;
+	font-size: 62.5%;
+}
+html>body {
+	font-size: 16px;
+}
+p {
+	font-size: 1em;
+	line-height: 1.5em;
+}
+.inner{
+	margin: 0 auto;
+	position: relative;
+	width: 1020px;
+}
+header[role="banner"]{
+
+	height: 200px;
+	width: 100%;
+
+}
+#content[role="main"]{
+	background: #FFF;
+	
+	margin: -45px auto 0;
+	padding: 24px 0 0 0;
+	width: 1020px;
+}
+.main{
+	border-right:4px solid #F0F0F0;
+	float:left;
+	margin:0 18px 0 0;
+	padding:0 18px 0 0;
+	position: relative;
+	width: 685px;
+}
+.secondary{
+	float:left;
+	padding: 0 20px 0 0;
+	width: 270px;
+}
+footer[role="contentinfo"]{
+	margin: 40px 0 0 0;
+	padding: 0 0 40px 0;
+}
+
+/* 2.1 HEADER STYLES
+--------------------------------------------------------- */
+header hgroup{ 
+	height: 124px;
+	margin: 0;
+	padding-top: 30px;
+	width: 505px;
+}
+header hgroup h1{
+	color:#FFF;
+	display: block;
+	height: 96px;
+	font-size: 48px;
+}
+header hgroup h2{
+	color:#FFF;
+	font-family: 'QuicksandBook', Arial, sans-serif;
+	font-size: 16px;
+	font-style:italic;
+	font-weight: 400;
+	margin: 0;
+	left:195px;
+	line-height: 1;
+	position:relative;
+	text-transform: none;
+	top:-25px;
+	
+}
+
+#menu-top-nav {
+	color:#FFFFFF;
+    font-size: 14px;
+    position: absolute;
+    right: 0;
+    top: 10px;
+}
+
+header .inner nav{
+	left: 0px;
+	padding: 0 20px;
+	position: relative;
+	top: 17px;
+	width: 980px;
+	z-index: 3;
+	border-radius: 15px;
+}
+header .inner nav ul{
+	color: #ffffff;
+	float: left;
+	font-family: sans-serif;
+	letter-spacing: 1px;
+	margin:0 0 0 -10px;
+
+}
+header .inner nav ul li{
+	float: left;
+}
+header .inner nav ul li a{
+	color: #FFF;
+	font-size:14.158px;
+	padding: 15px 10px 13px;
+		
+}
+header .inner nav ul li a:hover{
+	text-decoration: underline;
+}
+
+/* 2.2 POST STYLES
+--------------------------------------------------------- */
+.post{
+	padding: 0 0 0 20px;
+}
+
+/* 2.2.1 POST HEADER */
+.post header{
+	float:left;
+	margin: 0 0 20px;
+	padding:0 0 10px 166px;
+	width:inherit;
+}
+.post header h1{
+	color:#0090D2;
+	line-height: 1.3;
+}
+.post header small{
+	color: #888;
+	font-style: italic;
+	font-size: 14.158px;
+}
+
+
+/* 2.2.2 POST ENTRY */
+.post .entry{
+	float: right;
+	width: 500px;
+}
+.post .entry p {
+	margin:4px 0 10px;
+}
+.post .entry > p:first-of-type{
+	font-size:1.18em;
+	line-height:1.55;
+}
+/* 2.2.3 POST ASIDE */
+.post aside{
+	float:left;
+	font-size:14.158px;
+	padding:0 44px 0 0;
+	width:120px;
+}
+.post aside h3{
+	border: none;
+	color: #888;
+	font-size: 12px;
+	font-weight: normal;
+	letter-spacing: 0.1em;
+	line-height: 16px;
+	margin: 0 0 5px;
+	padding: 13px 0 0 0;
+	text-transform: uppercase;
+}
+
+
+/* 2.5 HOMEPAGE STYLES
+--------------------------------------------------------- */
+/* 2.5.1 OPENER STYLES */
+#opener{
+	float: left;
+	margin: 0 0 20px 0;
+}
+#opener .main .post:before{
+	content: "Featured";
+	position: absolute;
+	top: 88px;
+	left: 20px;
+	border: none;
+	color: #888;
+	font-size: 12px;
+	font-family: 'QuicksandBold', Arial, sans-serif;
+	font-weight: normal;
+	letter-spacing: 0.1em;
+	line-height: 16px;
+	margin: 0 0 5px;
+	padding: 13px 0 0 0;
+	text-transform: uppercase;
+}
+body.single #opener .post .entry > p:first-of-type{
+	font-size:1.18em;
+	line-height:1.55;
+}
+
+
+/* 2.6 SIDEBAR/SECONDARY STYLES
+--------------------------------------------------------- */
+.secondary .mod {
+	font-size: 14.158px;
+	clear:left;
+}
+.mod{
+	margin: 0 0 40px 0;
+}
+
+.mod h3{
+	border-top: 3px solid #F0F0F0;
+	color: #888;
+	margin: 0 0 5px;
+	padding: 10px 0;
+	text-transform: uppercase;
+}
+.secondary .mod:first-child h3{
+	border-top: none;
+}
+body.single .secondary .mod h3{
+	font-size: 12px;
+	font-weight: normal;
+	letter-spacing: 0.1em;
+	line-height: 16px;
+}
+.mod ul#recentcomments li{
+	border-bottom:1px solid #DDD;
+	display:block;
+        line-height: 1.4;
+	padding:8px 10px 8px 0;
+	overflow: hidden; 
+	text-overflow: ellipsis;
+}
+
+.mod ul#recentcomments li:last-child{
+	border-bottom: none;
+}
+
+/* 2.8 FOOTER STYLES
+--------------------------------------------------------- */
+footer[role="contentinfo"] .inner span{
+	font-size: 0.85em;
+	padding: 0 0 10px 184px;
+	background: #F0F0F0;
+}
+
+.w3c-logo {
+    float: right;
+    margin-left: 20px;
+	border: none;
+	background: transparent;
+}
+.vt-logo {
+    float: left;
+    margin-right: 20px;
+	border: none;
+	background: transparent;
+}
+/* 3. EXTRAS
+-----------------------------------------------------------------------------------------------
+===============================================================================================*/
+.group:after {
+	content: ".";
+	display: block;
+	height: 0;
+	visibility: hidden;
+	clear: both;
+}
+
+/* 4. TYPOGRAPHY
+-----------------------------------------------------------------------------------------------
+===============================================================================================*/
+h1, h2, h3, h4, h5, h6{
+	color: #0090D2;
+	font-family: 'QuicksandBold', Arial, sans-serif;
+	font-weight: 400;
+}
+h1{
+	font-size:28px;
+	line-height:1.65;
+}
+h2{
+	font-size:125%;
+	line-height:1.4;
+	margin:1.25em 0 0.8em;
+	text-transform: uppercase;
+}
+h3{
+	font-size: 1em;
+	line-height: 1.5em;
+	margin: 0.125em 0 1.125em 0;
+	text-transform: uppercase;
+}
+h4{
+	font-weight: bold;
+}

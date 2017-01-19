@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Formulaire d'inscription</title>
+    
+</head>
+<body>
+<form id='myform' autocomplete='on' >
+Tous les champs sont obligatoires
+<table border=0>
+    <tr>
+        <td><label for='nom'>Nom </label></td>
+        <td><input name='nom' type='text' autofocus required='true' onchange='check(this)' /></td>
+    </tr>
+    <tr>
+        <td><label for='prenom'>Pr&eacute;nom </label></td>
+        <td><input name='prenom' type='text' required onchange='check(this)' /></td>
+    </tr>
+    <tr>
+        <td><label for='mail'>EMail </td>
+        <td><input name='mail' type='email' required size='20' onchange='check(this)'/></td>
+    </tr>
+    <tr>
+        <td><label for='tel'>Tel </td>
+        <td><input name='tel' type='tel' onchange='check(this)' placeholder='0X XX XX XX XX' required /></td>
+    </tr>
+    <tr><td><label for='age'>Nombre de places</td>
+        <td><input name='age'  required type='number' min='1' value='0' max='8' onchange='check(this)'></td>
+    </tr>
+    <tr>
+        <td><label for='cid'>Formation </td>
+        <td><input name='cid' list='cids' required onchange='check(this);' />
+        <datalist id='cids'>
+        <option value='PHP' >
+        <option value='HWEB' >
+        <option value='HIT' >
+        <option value='GWT' >
+        </datalist>
+        </td>
+    </tr>
+    <tr>
+        <td><label for='debut'>D&eacute;but de session </td>
+        <td><input name='debut' type='date' required onchange='check(this)'/></td>
+    </tr>
+    <tr>
+        <td><label for='lieu'>Lieu </td>
+        <td><input name='lieu' list='centre' required onchange='check(this)' />
+        <datalist id='centre'>
+        <option value='Paris' >
+        <option value='Toulouse' >
+        <option value='Luxembourg' >
+        <option value='Gen&egrave;ve' >
+        </datalist>
+        </td>
+    </tr>
+    <tr>
+<td><label for='ccn'>Carte de cr&eacute;dit</td> <td> <input type="text" name="ccn" onchange='check(this);' required pattern="[0-9]{16}" title="A credit
+card number is 16 digits with no spaces or dashes"></td>
+</tr>
+</table>
+
+<input type='submit' id='btngo' value='Go' disabled='true' />
+<p>
+<progress id="progressBar" value="0" max="90"></progress>
+<div id="percent" ></div>
+</form>
+
+<script>
+
+function check(input) {
+
+//input.setCustomValidity("bof bof"); pour erreur custom
+
+input.oninvalid = erreur;
+input.checkValidity(); // appel explicite à la fct de validation
+// permet d'afficher les messages d'erreur ...
+
+
+
+
+   var eltBar = document.getElementById("progressBar");
+   eltBar.value=percentOK();
+	var eltPct = document.getElementById("percent");
+	eltPct.innerHTML ="Remplissage : "+ Math.round( eltBar.position * 100 )+ "%";
+    if (eltBar.position==1)  {
+        document.getElementById("btngo").disabled=false;
+        }
+    
+}
+function percentOK() {
+var ok=0;
+var form = document.getElementById('myform');
+var champs = form.elements;
+for (var i=0; i<champs.length;i++) {
+    if(champs[i].willValidate && champs[i].validity.valid) {
+       ok+=10; 
+        }
+    }
+return ok
+}
+
+function erreur(evt){
+console.log('erreur');
+console.log(evt.target.validationMessage);
+
+//pour éviter l'affichage du message du navigateur, ne pas propager l'évènement
+//evt.preventDefault();
+
+}
+</script>
+</body>
+</html>

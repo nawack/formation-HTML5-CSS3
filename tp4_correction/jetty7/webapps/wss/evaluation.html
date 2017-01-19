@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Formulaire d'&eacute;valuation</title>
+    
+<script type="text/javascript">
+
+function showValue(newValue, element)
+{
+
+switch (Number(newValue)) {
+    case 0 :
+	element.innerHTML="Mauvais";
+    break;
+    case 2 :
+	element.innerHTML="Insuffisant";
+    break;
+    case 4 :
+	element.innerHTML="Moyen";
+    break;
+    case 6 :
+	element.innerHTML="Bon";
+    break;
+    case 8 :
+	element.innerHTML="Excellent";
+    break;
+    }
+}
+
+function chart(form) {
+var graphCanvas = document.getElementById('canvas');
+    if (graphCanvas && graphCanvas.getContext) {
+        var cxt = graphCanvas.getContext('2d');
+        cxt.clearRect(0,0,420,420);
+        drawAxis(cxt,graphCanvas);
+        }
+        cxt.fillStyle="#FF00FF";
+     for(var i =0;i<4;i++) {
+                
+                var note= document.getElementById("note"+(i+1)).value;
+                drawBar(cxt,i*100,graphCanvas.height-(note*50),100, note*50);
+            }
+return false;
+}
+
+function drawAxis(context,canvas) {
+       context.beginPath(); 
+        context.moveTo(20,canvas.height - 20);
+			context.lineTo(canvas.width,canvas.height - 20);
+			context.moveTo(20,canvas.height - 20);
+			context.lineTo(20,0);
+			context.strokeStyle='#777';
+			context.stroke();	
+        context.closePath();
+
+    addLabel(context,canvas,["Manuel","Formateur","Labs","Locaux"],["Nul","Bof","Ok","Bon","Top"]);
+}
+
+function drawBar(context,x,y,barWidth,barHeight){
+			context.beginPath();
+			context.rect(x+20,y-20,barWidth-2,barHeight);
+           /* var grd=context.createLinearGradient(x+20,y-20,barWidth-2,barHeight);
+            grd.addColorStop(0,"#FF6600");
+            grd.addColorStop(1,"#FF3300");
+            context.fillStyle=grd;*/
+			context.fillStyle="#FF6600";
+			context.fill();
+			context.closePath();
+            //context.fillRect(x+20,y-20,barWidth-2,barHeight);
+            //params 1 : startX, 2: startY, 3 : largeur rect( vers la droite), 4 : hauteur rect (vers le bas)
+
+    }
+function addLabel(context,canvas,dataX, dataY){
+			
+            var barWidth = 100;
+            var i;
+				for (i=0;i<4;i++){
+					context.font = "bold 9px arial";
+					context.fillStyle='#111';
+                    context.fillText("" + dataX[i] + "",(i*barWidth) + 50,canvas.height-5);
+				}
+                 
+                    
+			    for (i=0;i<5;i++){
+					context.font = "bold 9px arial";
+					context.fillStyle='#111';
+                    if (i==4) {
+                    context.fillText("" + dataY[i] + "",1,10);
+                    }
+                    else {
+                    context.fillText("" + dataY[i] + "",1,canvas.height-(i*100)-20);
+                    }
+				}
+		}
+        
+</script>
+</head>
+<body>
+<form autocomplete='on' >
+Saisissez votre &eacute;valuation
+<table border=0>
+    <tr>
+        <td>Nom </td>
+        <td><input name='nom' type='text' autofocus ></td>
+    </tr>
+    <tr>
+        <td>EMail </td>
+        <td><input name='mail' type='email' size='20'/></td>
+    </tr>
+   <tr>
+        <td>Manuel </td>
+        <td><input type="range" id="note1" min="0" max="8" step="2" value="0" onchange="showValue(this.value, this.nextSibling)" /><span id="range1"></span>
+</td>
+    </tr>
+    <tr>
+        <td>Formateur </td>
+        <td><input type="range" id="note2" min="0" max="8" step="2" value="0" onchange="showValue(this.value,this.nextSibling)" /><span id="range2"></span>
+</td>
+    </tr><tr>
+        <td>TP </td>
+        <td><input type="range"  id="note3" min="0" max="8" step="2" value="0" onchange="showValue(this.value,this.nextSibling)" /><span id="range3"></span>
+</td>
+    </tr><tr>
+        <td>Locaux </td>
+        <td><input type="range" id="note4" min="0" max="8" step="2" value="0" onchange="showValue(this.value,this.nextSibling)" /><span id="range4"></span>
+</td>
+    </tr>
+
+</table>
+
+<input type='button' onclick='return chart(this);' value='Afficher' />
+  <div id='container'>
+            <canvas id="canvas" width="420" height="420" style="border:1px solid #c3c3c3;"></canvas>
+   </div>
+</form>
+</body>
+</html>

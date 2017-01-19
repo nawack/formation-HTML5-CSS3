@@ -1,0 +1,142 @@
+<html>
+<head>
+	<title>Sondage & moyenne</title>
+	<link rel="stylesheet" href="form.css" media="screen">
+</head>
+
+<body>
+	
+	<form id="myForm">
+	<fieldset>
+		<legend>Formulaire de satisfaction</legend>
+		<ul>
+		<li><label for="nom">Nom:</label><input name="nom" autofocus"></li>
+		<li><label for="email">Email:</label><input name="email" type="email"></li>
+		<li><label for="manuel">Manuel:</label><input name="note1" type="range" step="2" min="0" max="8" value="0" onChange="showValue(this.value, this.nextSibling)"><span id="value1">Mauvais</span></li>
+		<li><label for="formateur">Formateur:</label><input name="note2" type="range" step="2" min="0" max="8" value="0" onChange="showValue(this.value, this.nextSibling)"><span id="value2">Mauvais</span></li>
+		<li><label for="tp">Lab:</label><input name="note3" type="range" step="2" min="0" max="8" value="0" onChange="showValue(this.value, this.nextSibling)"><span id="value3">Mauvais</span></li>
+		<li><label for="locaux">Locaux:</label><input name="note4" type="range" step="2" min="0" max="8" value="0" onChange="showValue(this.value, this.nextSibling)"><span id="value4">Mauvais</span></li>
+		</ul>
+	</fieldset>
+	<fieldset>
+		<input type='button' onclick='refreshGraph();' value='soumettre' />
+	</fieldset>	
+	<fieldset>
+		<legend>Moyenne</legend>
+		<canvas id="monCanvas" width="420" height="420"></canvas>
+	</fieldset>	
+	</form>
+
+	
+	<script type="text/javascript">
+	var canvas = document.getElementById("monCanvas");
+	var context = canvas.getContext("2d");
+	var topLeftCornerX = 0;
+	var topLeftCornerY = 0;
+	var width = 420;
+	var height = 420;
+
+	showGraph();
+	
+	function showValue(newValue, element) {
+		switch (Number(newValue)) {
+			case 0 :
+				element.innerHTML = "Mauvais";
+				break;
+			case 2 :
+				element.innerHTML = "Insuffisant";
+				break;
+			case 4 :
+				element.innerHTML = "Moyen";
+				break;
+			case 6 :
+				element.innerHTML = "Bon";
+				break;
+			case 8 :
+				element.innerHTML = "Excellent";
+				break;
+		}
+	}
+	
+	function showGraph(){
+		context.beginPath();
+		context.rect(topLeftCornerX, topLeftCornerY, width, height);
+		context.rect(20, topLeftCornerY, 400, 400);
+		context.fillStyle = "#FFF";
+		context.fill();
+		context.lineWidth = 2;
+		context.strokeStyle = "#777";
+		context.stroke();
+		
+		context.fillStyle = "#777";
+		context.font = "8pt Calibri";
+		context.textAlign = "center";
+		context.textBaseline = "middle";
+		context.fillText("Manuel", 70, 410);
+		context.fillText("Formateur", 170, 410);
+		context.fillText("Lab", 270, 410);
+		context.fillText("Locaux", 370, 410);
+		context.save();
+
+		context.translate(0, 420);
+		context.rotate(-Math.PI/2);
+		context.fillText("Insuffisant", 70, 10);
+		context.fillText("moyen", 170, 10);
+		context.fillText("Bon", 270, 10);
+		context.fillText("Excelent", 370, 10);
+		context.restore();
+		context.closePath();
+	}
+	
+	function refreshGraph() {
+		var ranges = document.querySelectorAll("input[type='range']");
+		var param = "";
+		for (var i = 1; i <= ranges.length; i++) {
+			if (i > 1) {
+				param += "&";
+			}
+			param += "note" + i + "=" + ranges[i-1].value;
+		}
+		console.log(param);
+		
+		var xhr = new XMLHttpRequest()
+		xhr.open("POST", "/wss/posteval");
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+		xhr.send(param);
+		xhr.onload = function() {
+			console.log(xhr.responseText);
+			var notes = JSON.parse(xhr.responseText);
+			console.log(notes);
+			showBar(notes);
+		}
+	}
+	
+	function showBar(notes) {
+		showGraph();
+		context.beginPath();
+		context.rect(20, topLeftCornerY, 400, 400);
+		context.fillStyle = "#FFF";
+		context.fill();
+		context.lineWidth = 2;
+		context.strokeStyle = "#777";
+		context.stroke();
+		context.closePath();
+		
+		for (var i = 0; i < notes.length; i++) {
+			context.beginPath();
+			hautGaucheX = i*100+20;
+			hauteur = (notes[i]/2)*100;
+			hautGaucheY = 400 - hauteur;
+			context.rect(hautGaucheX, hautGaucheY, 100, hauteur);
+			context.fillStyle = "#F50";
+			context.fill();
+			context.lineWidth = 2;
+			context.strokeStyle = "#777";
+			context.stroke();
+			context.closePath();
+		}
+	}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+    <title>Quizz</title>
+    
+<link rel="stylesheet" type="text/css" href="quizzV1.css" media="all">
+
+</head>
+<body>
+    <div class="presentation">
+      <div id="presentation-counter">Loading...</div>
+      <div class="slides">
+        <div class="slide" id="landing-slide">
+          
+          <section class="middle">
+            <h1>This is a valtech quizz</h1>
+             <h2>
+               HTML5/CSS3
+              </h2>
+            <p>Press <span id="left-init-key" class="key">&rarr;</span> key to advance.</p>
+            <p>The layout and slides transitions are based on the HTML5 Rocks presentation</p>           
+           </section>
+        </div>
+
+        <div class="slide" id="controls-slide">
+          
+          <section>
+            <p>Slides controls, press:</p>
+            <ul>
+              <li><span class="key">←</span> and <span class="key">→</span> to move around.</li>
+              <li><span class="key">Ctrl/Command</span> and <span class="key">+</span> or <span class="key">-</span> to zoom in and out if slides don’t fit.</li>
+              <li><span class="key">s</span>To save your answers</li>
+               <li>You are <span class="key"><output id="connected"></output></span></li>   
+            </ul>
+          </section>
+        </div>
+                
+        <div class="slide" id="dummy-question-slide">
+          <header> 
+          <h1 class='html'></h1>
+          </header>
+          <section class="middle">
+            HTML5 is a standard technology supported by every browser.
+            <p>
+            <input type='radio' id='q1' name='q1'>true</input>
+            <input type='radio' name='q1'/>false</input>
+          </section>
+        </div>
+
+     
+      </div> <!-- slides -->
+
+    </div> <!-- presentation -->
+
+    <script src="quizzV1.js"></script>
+
+  <script>
+  var s = (navigator.onLine)?'online':'offline';
+  console.log(s);
+  window.offline = function(e) {
+  alert('Connection Lost ! Do not forget to save your answers');
+  };
+  document.getElementById('connected').value= s;
+   
+        
+   
+       
+  </script>
+   
+  </body>
+</html>

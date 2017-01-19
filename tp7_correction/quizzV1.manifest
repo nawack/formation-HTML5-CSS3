@@ -1,0 +1,21 @@
+CACHE MANIFEST
+# files to cache
+vt.html
+vt.css
+LogoValtechTraining.png
+HTML5_Badge_64.png
+quizzV1.html
+quizzV1.css
+quizzV1.js
+./HTML5_Tech_Classes_128/HTML5_3D_effects_128.png
+./HTML5_Tech_Classes_128/HTML5_Connectivity_128.png
+./HTML5_Tech_Classes_128/HTML5_Device_Access_128.png
+./HTML5_Tech_Classes_128/HTML5_Multimedia_128.png
+
+
+NETWORK:
+*
+
+#in case a resource is not in the cache
+FALLBACK:
+./evaluation.html quizzV1off.html

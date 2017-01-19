@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>CSS Transition demo</title>
+    <style>
+    
+  body {
+  background: Darkorange;
+ }
+body h1 {
+    color:#FFF;
+	display: block;
+	height: 46px;
+	font-size: 48px;
+    text-align: center;
+}
+.slide-images {
+  position: relative;
+  list-style: none;
+  padding: 0;
+  overflow: hidden;
+}
+.slide-images .slide-image {
+  position: absolute;
+   opacity: 0;
+}
+
+.slide-images .slide-image.current {
+        opacity: 1;
+      }
+      
+.slide-images .slide-image span {
+  position: absolute;
+  right: 0;
+  bottom: -14px;
+  padding: 5px 10px;
+  color: rgb(255,255,255);
+  font-weight: bold;
+  font-size: 14px;
+  background-color: rgb(0,0,0);
+}
+
+
+#demoSliderContainer .options {
+  padding: 3px 10px;
+  text-align: center;
+  min-height: 15px;
+}
+#demoSliderContainer .options a {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 12px;
+  font-family: Georgia,Serif;
+  color: #91BECC;
+}
+#demoSliderContainer .options a:hover {
+  color: #D3E5EB;
+}
+
+#demoSliderContainer .options .prevSlide {
+  float: left;
+}
+#demoSliderContainer .options .nextSlide {
+  float: right;
+}
+#demoSliderContainer {
+  margin: 5px auto;
+  padding: 0;
+  background: white;
+  overflow: auto;
+  width: 200px;
+}
+#demoSlider {
+  margin: 0 auto;
+  padding: 0;
+ 
+  height: 200px;
+  width: 128px;
+}
+
+
+      
+    </style>
+  </head>
+
+  <body>
+  <h1> CSS3 </h1>
+    <div id="demoSliderContainer">
+      <ul id="demoSlider" class="slide-images myOwnTransition">
+        <li class="slide-image current">
+          <img src="HTML5_Tech_Classes_128/HTML5_3D_effects_128.png" />
+          <span>3D Effects</span>
+        </li>
+        <li class="slide-image">
+          <img src="HTML5_Tech_Classes_128/HTML5_Connectivity_128.png" />
+          <span>Connectivity</span>
+        </li>
+        <li class="slide-image">
+          <img src="HTML5_Tech_Classes_128/HTML5_Multimedia_128.png" />
+          <span>Multimedia</span>
+        </li>
+        <li class="slide-image">
+          <img src="HTML5_Tech_Classes_128/HTML5_Offline_Storage_128.png" />
+          <span>Offline Storage</span>
+        </li>
+            <li class="slide-image">
+          <img src="HTML5_Tech_Classes_128/HTML5_Device_Access_128.png" />
+          <span>Device Access</span>
+        </li>
+        <li class="slide-image">
+          <img src="HTML5_Tech_Classes_128/HTML5_Performance_128.png" />
+          <span>Performance</span>
+        </li>
+        <li class="slide-image">
+          <img src="HTML5_Tech_Classes_128/HTML5_Semantics_128.png" />
+          <span>Semantics</span>
+        </li>
+        <li class="slide-image">
+          <img src="HTML5_Tech_Classes_128/HTML5_Styling_128.png" />
+          <span>Styling</span>
+        </li>
+      </ul>
+      <div class="options">
+        <a href="javascript:;" class="prevSlide">prev</a>
+        <a href="javascript:;" class="nextSlide">next</a>
+      </div>
+    </div>
+    
+    <script type="text/javascript">
+     
+         var slides = document.querySelectorAll('.slide-image');
+          
+          /// Slide Navigation ///
+          var currentSlideNum = 1;
+          document.querySelector('.prevSlide').onclick = function() {
+          var newSlideNum = currentSlideNum<2 ? slides.length : currentSlideNum-1;
+            goToSlide(newSlideNum, currentSlideNum);
+            currentSlideNum = newSlideNum;
+          };
+          document.querySelector('.nextSlide').onclick = function() {
+           var newSlideNum = currentSlideNum+1>slides.length ? 1 : currentSlideNum+1;
+            goToSlide(newSlideNum, currentSlideNum);
+            currentSlideNum = newSlideNum;
+               
+          };
+          
+        
+     
+        
+        
+          var goToSlide = function(slideNum, oldNum) {
+          // TODO
+          // add style current to slide number slideNum
+          // remove style current from slide number oldNum
+          };
+        
+        
+          
+          
+    
+ 
+    </script>
+  </body>
+</html>

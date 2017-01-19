@@ -1,0 +1,87 @@
+<html>
+<head>
+	<title>Exemple de formulaire HTML5</title>
+	<link rel="stylesheet" href="form.css" media="screen">
+</head>
+
+<body>
+	<form id="myForm">
+	<fieldset>
+		<legend>Informations Peronnel</legend>
+		<ul>
+		<li><label for="nom">Nom:</label><input name="nom" required autofocus" onChange="check(this)"></li>
+		<li><label for="prenom">Prénom:</label><input name="prenom" required  onChange="check(this)"></li>
+		<li><label for="telephone">Téléphone:</label><input name="telephone" placeholder="01.23.45.67.89" required onChange="check(this)"></li>
+		<li><label for="email">Email:</label><input name="email" type="email" required onChange="check(this)"></li>
+		</ul>
+	</fieldset>	
+	<fieldset>
+		<legend>Informations Formation</legend>
+		<ul>
+		<li><label for="nbPlace">Nombre de places:</label><input name="nbPlace" type="number" required onChange="check(this)"></li>
+		<li>
+			<label for="codeFormation">Code Formation:</label>
+			<input name="codeFormation" type="text" list="codeFormationData" required onChange="check(this)">
+			<datalist id="codeFormationData"  onChange="check(this)">
+				<option value="0001 - HTML5 /  CSS3">
+				<option value="0002 - Dev Mobile">
+				<option value="0003 - Soyez Agile">
+			</datalist>
+		</li>
+		<li>
+			<label for="lieuFormation">Lieu de la formation:</label>
+			<input name="lieuFormation" type="text" list="lieuFormationData" required onChange="check(this)">
+			<datalist id="lieuFormationData">
+				<option value="Paris">
+				<option value="Marseille">
+			</datalist>
+		</li>
+		<li><label for="dateFormation">Date de session:</label><input name="dateFormation" type="date" required onChange="check(this)"></li>
+		</ul>
+	</fieldset>	
+	<fieldset>
+		<legend>Paiement</legend>
+		<ul>
+			<li>
+				<fieldset>
+					<legend>Type de carte</legend>
+					<ul>
+						<li><input id="cb" name="typeCarte" type="radio" checked><label for="cb">CB</label></li>
+						<li><input id="visa" name="typeCarte" type="radio"><label for="visa">VISA</label></li>
+					</ul>
+				</fieldset>
+			</li>
+			<li><label for="codeCarte">Numéro de carte:</label><input id="codeCarte" name="codeCarte" type="text" required onChange="check(this)"></li>
+			<li><label for="codeSecu">Code de sécurité:</label><input id="codeSecu" name="codeSecu" type="text" required onChange="check(this)"></li>
+			<li><label for="nomTitulaire">Nom du tutulaire:</label><input id="nomTitulaire" name="nomTitulaire" type="text"></li>
+		</ul>
+	</fieldset>
+	<fieldset>
+		<legend>Sondage</legend>
+		<ul>
+		<li><label for="url">Site partenaire:</label><input name="url" placeholder="http://www.valtech.com/" type="url"></li>
+		<li><label for="Commentaire">Commentaire:</label><textarea name="Commentaire" required></textarea></li>
+		</ul>
+	</fieldset>	
+	<fieldset>
+		<progress id="progressBar" value="0" max="90"></progress>
+		<button type="submit">valider</button>
+	</fieldset>
+	</form>
+
+	<script>
+		function check(elem) {
+			console.log(elem.validity)
+//			elem.oninvalid = function(evt) {
+//				//evt.preventDefault():
+//				return false;
+//			} 
+			if (elem.checkValidity().valid = true) {
+				document.getElementById("progressBar").value+=10;
+			}
+		}
+	</script>
+
+</body>
+
+</html>

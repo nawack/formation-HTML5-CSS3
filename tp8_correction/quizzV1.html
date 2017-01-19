@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+    <title>Quizz</title>
+    
+<link rel="stylesheet" type="text/css" href="quizzV1.css" media="all">
+<style>
+.drop-zone,.start-zone{
+        margin : 5px;
+        padding: 20px;
+        border: 5px solid #888;
+        float: left;
+        height: 150px;
+        width: 150px;
+   
+            
+}
+.possible{
+border :5px solid #FF8C00
+}
+</style>
+</head>
+<body>
+    <div class="presentation">
+      <div id="presentation-counter">Loading...</div>
+      <div class="slides">
+        <div class="slide" id="landing-slide">
+          
+          <section class="middle">
+            <h1>This is a valtech quizz</h1>
+             <h2>
+               HTML5/CSS3
+              </h2>
+            <p>Press <span id="left-init-key" class="key">&rarr;</span> key to advance.</p>
+            <p>The layout and slides transitions are based on the HTML5 Rocks presentation</p>           
+           </section>
+        </div>
+
+        <div class="slide" id="controls-slide">
+          
+          <section>
+            <p>Slides controls, press:</p>
+            <ul>
+              <li><span class="key">←</span> and <span class="key">→</span> to move around.</li>
+              <li><span class="key">Ctrl/Command</span> and <span class="key">+</span> or <span class="key">-</span> to zoom in and out if slides don’t fit.</li>
+              <li><span class="key">s</span>To save your answers</li>
+               <li>You are <span class="key"><output id="connected"></output></span></li>   
+            </ul>
+          </section>
+        </div>
+                
+        <div class="slide" id="dummy-question-slide">
+          <header> 
+          <h1 class='html'></h1>
+          </header>
+          <section class="middle">
+            HTML5 is a standard technology supported by every browser.
+            <p>
+            <input type='radio' id='q1' name='q1'>true</input>
+            <input type='radio' name='q1'/>false</input>
+          </section>
+        </div>
+
+        <div class="slide" id="logo-question-slide">
+          
+          <section class="middle ">
+           <p>Drop each image on the right box</p>
+           <div class="start-zone"><img id='device' src="HTML5_Tech_Classes_128/HTML5_Device_Access_128.png" draggable /></div>
+           <div class="start-zone"><img id='connectivity' src="HTML5_Tech_Classes_128/HTML5_Connectivity_128.png" draggable /></div>
+           <div class="start-zone"><img id='multimedia' src="HTML5_Tech_Classes_128/HTML5_Multimedia_128.png" draggable /></div>
+           <div class="start-zone"><img id='semantics' src="HTML5_Tech_Classes_128/HTML5_Semantics_128.png" draggable /></div>
+          
+          
+          <div class="drop-zone">Device Access</div>
+          <div class="drop-zone">Connectivity</div>
+          <div class="drop-zone">Multimedia</div>
+          <div class="drop-zone">Semantics</div>
+          
+          <input type='hidden' id='q2' />
+          </section>
+          
+          <script>
+          var imgs = document.querySelectorAll('img[draggable]');
+          var startzones = document.getElementsByClassName('start-zone');
+      
+          var dropzones = document.getElementsByClassName('drop-zone');
+         for (i in imgs) {
+           if(imgs[i].src) {
+           
+            imgs[i].ondragstart = dragStart;
+            imgs[i].ondragend = dragEnd;
+          
+           }
+         }
+         
+          for (var i=0;i<dropzones.length;i++) {
+                             
+                     
+                     dropzones[i].ondragover= dragOver;
+                     dropzones[i].ondrop= drop;
+                    }
+                    
+        
+        function drop(event) {
+         event.target.appendChild(document.getElementById(event.dataTransfer.getData('Text')));
+            event.stopPropagation();
+            return false;
+        }
+         
+         function dragOver(event) {
+         
+                if (event.preventDefault) event.preventDefault(); // allows us to drop
+                event.dataTransfer.dropEffect = 'move';
+              return false;
+            }
+        function dragEnd(event) {
+              event.target.classList.toggle('possible');
+              toggleDropZones();
+             
+       }
+       function dragStart(event) {
+          
+                event.dataTransfer.effectAllowed = 'move';
+      
+                event.dataTransfer.setData("Text", event.target.getAttribute('id')); 
+                 event.target.classList.toggle('possible');
+             toggleDropZones();
+              }
+              
+        function toggleDropZones() {
+
+                for (var i=0;i<dropzones.length;i++) {
+                    // Todo : check for free drop zones first      
+                                        
+                     dropzones[i].classList.toggle('possible');
+                    }
+            };
+            
+            
+          </script>
+          
+        </div>
+
+      </div> <!-- slides -->
+
+    </div> <!-- presentation -->
+
+    <script src="quizzV1.js"></script>
+
+  <script>
+  var s = (navigator.onLine)?'online':'offline';
+  console.log(s);
+  window.offline = function(e) {
+  alert('Connection Lost ! Do not forget to save your answers');
+  };
+  document.getElementById('connected').value= s;
+   
+          if(localStorage['q1']) {
+           var s = document.querySelector('.slide:nth-child(3) header h1');
+            s.innerHTML = "Already Answered";
+          }
+  </script>
+   
+  </body>
+</html>

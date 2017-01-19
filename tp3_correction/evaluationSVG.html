@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+<form autocomplete='on' onsubmit='return chart(this);'>
+Saisissez votre &eacute;valuation
+<table border=0>
+    <tr>
+        <td>Nom </td>
+        <td><input name='nom' type='text' autofocus ></td>
+    </tr>
+    <tr>
+        <td>EMail </td>
+        <td><input name='mail' type='email' size='20'/></td>
+    </tr>
+   <tr>
+        <td>Manuel </td>
+        <td><input type="range" id="note1" min="0" max="8" step="2" value="0" onchange="showValue(this.value, this.nextSibling)" /><span id="range1"></span>
+</td>
+    </tr>
+    <tr>
+        <td>Formateur </td>
+        <td><input type="range" id="note2" min="0" max="8" step="2" value="0" onchange="showValue(this.value,this.nextSibling)" /><span id="range2"></span>
+</td>
+    </tr><tr>
+        <td>TP </td>
+        <td><input type="range"  id="note3" min="0" max="8" step="2" value="0" onchange="showValue(this.value,this.nextSibling)" /><span id="range3"></span>
+</td>
+    </tr><tr>
+        <td>Locaux </td>
+        <td><input type="range" id="note4" min="0" max="8" step="2" value="0" onchange="showValue(this.value,this.nextSibling)" /><span id="range4"></span>
+</td>
+    </tr>
+
+</table>
+
+<input id='btnsub' type='submit' value='Afficher' />
+  <div id='container'>
+<svg id='svg' xmlns="http://www.w3.org/2000/svg"  width="420" height="420" version="1.1">
+
+<line x1="20" y1="400" x2="420" y2="400"
+style="stroke:rgb(99,99,99);stroke-width:2"/>
+
+<line x1="20" y1="0" x2="20" y2="400"
+style="stroke:rgb(99,99,99);stroke-width:2"/>
+
+<rect id="bar1" x="20" y="400" rx="5" ry="5" width="100" 
+height="0" style="fill:orange;stroke:black;
+stroke-width:1;opacity:0.8"><animate attributeName="height" attributeType="XML" from="0" begin='btnsub.click' dur="3s" fill="freeze" />
+</rect>
+<rect id="bar2" x="120" y="400" rx="5" ry="5" width="100" 
+height="0" style="fill:orange;stroke:black;
+stroke-width:1;opacity:0.8"><animate attributeName="height" attributeType="XML" from="0" begin='btnsub.click' dur="3s" fill="freeze" />
+</rect>
+<rect id="bar3" x="220" y="400" rx="5" ry="5" width="100" 
+height="0" style="fill:orange;stroke:black;
+stroke-width:1;opacity:0.8"><animate attributeName="height" attributeType="XML" from="0" begin='btnsub.click' dur="3s" fill="freeze" />
+</rect>
+<rect id="bar4" x="320" y="400" rx="5" ry="5" width="100" 
+height="0" style="fill:orange;stroke:black;
+stroke-width:1;opacity:0.8"><animate attributeName="height" attributeType="XML" from="0" begin='btnsub.click' dur="3s" fill="freeze" />
+</rect>
+<text x="0" y="10" style="font-size:12px;">Top</text>
+<text x="0" y="110" style="font-size:12px;">Bon</text>
+<text x="0" y="210" style="font-size:12px;">Ok</text>
+<text x="0" y="310" style="font-size:12px;">Bof</text>
+<text x="0" y="410" style="font-size:12px;">Nul</text>
+
+<text y="410" x="50" style="font-size:12px;">Manuel</text>
+<text y="410" x="150" style="font-size:12px;">Formateur</text>
+<text y="410" x="250" style="font-size:12px;">Labs</text>
+<text y="410" x="350" style="font-size:12px;">Locaux</text>
+</svg></div>
+</form>
+
+<script>
+
+function showValue(newValue, element)
+{
+
+switch (Number(newValue)) {
+    case 0 :
+	element.innerHTML="Mauvais";
+    break;
+    case 2 :
+	element.innerHTML="Insuffisant";
+    break;
+    case 4 :
+	element.innerHTML="Moyen";
+    break;
+    case 6 :
+	element.innerHTML="Bon";
+    break;
+    case 8 :
+	element.innerHTML="Excellent";
+    break;
+    }
+}
+
+function chart(form) {
+var bar; var note; 
+for(var i =0;i<4;i++) {
+	bar = document.getElementById('bar'+(i+1));
+	note = document.getElementById('note'+(i+1)).value;
+   bar.setAttribute('y',400-note*50);
+  // bar.setAttribute('height', note*50); plus besoin avec l'animation
+ bar.firstChild.setAttribute('to', note*50);
+
+}
+
+return false;
+}
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Formulaire d'inscription</title>
+    
+</head>
+<body>
+<form id='myform' autocomplete='on' >
+Tous les champs sont obligatoires
+<table border=0>
+    <tr>
+        <td><label for='nom'>Nom </label></td>
+        <td><input name='nom' type='text' onchange='check(this);' autofocus required='true'  /></td>
+    </tr>
+    <tr>
+        <td><label for='prenom'>Pr&eacute;nom </label></td>
+        <td><input name='prenom' type='text' required /></td>
+    </tr>
+    <tr>
+        <td><label for='mail'>EMail </td>
+        <td><input name='mail' type='email' required size='20' /></td>
+    </tr>
+    <tr>
+        <td><label for='tel'>Tel </td>
+        <td><input name='tel' type='tel'  placeholder='0X XX XX XX XX' required /></td>
+    </tr>
+    <tr><td><label for='age'>Nombre de places</td>
+        <td><input name='age'  required type='number' min='1' value='0' max='8' ></td>
+    </tr>
+    <tr>
+        <td><label for='cid'>Formation </td>
+        <td><input name='cid' list='cids' required  />
+        <datalist id='cids'>
+        <option value='PHP' >
+        <option value='HWEB' >
+        <option value='HIT' >
+        <option value='GWT' >
+        </datalist>
+        </td>
+    </tr>
+    <tr>
+        <td><label for='debut'>D&eacute;but de session </td>
+        <td><input name='debut' type='date' required /></td>
+    </tr>
+    <tr>
+        <td><label for='lieu'>Lieu </td>
+        <td><input name='lieu' list='centre' required  />
+        <datalist id='centre'>
+        <option value='Paris' >
+        <option value='Toulouse' >
+        <option value='Luxembourg' >
+        <option value='Gen&egrave;ve' >
+        </datalist>
+        </td>
+    </tr>
+   <tr>
+<td><label for='ccn'>Carte de cr&eacute;dit</td> <td> <input type="text" name="ccn" required pattern="[0-9]{16}" title="A credit
+card number is 16 digits with no spaces or dashes"></td>
+</tr>
+</table>
+
+<input type='submit' id='btngo' value='Go' />
+
+</form>
+<script>
+var formulaire =document.getElementById('myform');
+formulaire.onivalid=function(evt) {
+console.log(evt);
+}
+formulaire.onsubmit = function(evt) {
+this.checkValidity();
+
+evt.preventDefault();
+}
+
+function check(elem) {
+
+console.log(elem.validity);
+elem.oninvalid = function(evt)  {
+
+    evt.preventDefault();
+   return false;
+
+}
+elem.checkValidity();
+
+}
+
+
+</script>
+</body>
+</html>
